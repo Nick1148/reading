@@ -128,15 +128,18 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 border-0 font-bold px-12 h-16 text-xl shadow-xl transition-transform hover:scale-105"
-                asChild
-              >
-                <Link href="/meetings">
-                  모임 참여하기
-                </Link>
-              </Button>
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                <Button
+                  size="lg"
+                  className="relative bg-white text-primary hover:bg-white border-0 font-bold px-12 h-16 text-xl md:text-2xl shadow-[0_0_40px_-5px_rgba(0,0,0,0.3)] hover:shadow-[0_0_50px_-10px_rgba(255,255,255,0.5)] transition-all hover:scale-105 active:scale-95 w-full md:w-auto animate-[pulse_3s_ease-in-out_infinite]"
+                  asChild
+                >
+                  <Link href="/meetings">
+                    모임 참여하기
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -150,10 +153,10 @@ export default function HomePage() {
                 단순히 책을 읽는 것을 넘어, 함께 성장하는 커뮤니티를 만들어갑니다.
               </p>
             </div>
-            {/* Frameless: Mobile friendly gap */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 px-4 md:px-12">
+            {/* Frameless: Mobile Horizontal Scroll, Desktop Grid */}
+            <div className="flex flex-nowrap md:grid md:grid-cols-3 gap-6 md:gap-16 px-4 md:px-12 overflow-x-auto snap-x snap-mandatory -mx-4 md:mx-0 pb-8 md:pb-0 scrollbar-hide">
               {FEATURES.map((feature) => (
-                <div key={feature.title} className="flex flex-col items-center text-center group">
+                <div key={feature.title} className="flex-none snap-center w-[280px] md:w-auto flex flex-col items-center text-center group">
                   <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6 md:mb-8">
                     <Image
                       src={feature.iconUrl}
@@ -163,7 +166,7 @@ export default function HomePage() {
                     />
                   </div>
                   <h3 className="text-h4 mb-3 md:mb-4 text-foreground font-bold">{feature.title}</h3>
-                  <p className="text-body md:text-body-lg text-muted-foreground leading-relaxed max-w-xs">
+                  <p className="text-body md:text-body-lg text-muted-foreground leading-relaxed md:max-w-xs whitespace-pre-wrap">
                     {feature.description}
                   </p>
                 </div>
@@ -189,7 +192,7 @@ export default function HomePage() {
               {/* Connecting Line (Mobile: Vertical) */}
               <div className="block md:hidden absolute top-8 bottom-8 left-1/2 w-0.5 bg-primary/20 -translate-x-1/2 -z-10" />
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 px-4">
+              <div className="flex flex-nowrap md:grid md:grid-cols-4 gap-4 md:gap-8 px-4 overflow-x-auto snap-x snap-mandatory -mx-4 md:mx-0 pb-8 md:pb-0 scrollbar-hide">
                 {[
                   {
                     step: '01',
@@ -212,7 +215,7 @@ export default function HomePage() {
                     description: '월 1회 정기 모임에서\n깊이 있는 대화를 나눕니다',
                   },
                 ].map((item, index) => (
-                  <div key={item.step} className="flex flex-col items-center text-center group relative">
+                  <div key={item.step} className="flex-none snap-center w-[260px] md:w-auto flex flex-col items-center text-center group relative">
                     {/* Circle Node (With background to cover line) */}
                     <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mb-6 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
                       <span className="text-title font-bold text-primary font-serif">
@@ -280,9 +283,11 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-nowrap md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 md:mx-0 pb-8 md:pb-0 scrollbar-hide">
               {upcomingMeetings.map((meeting) => (
-                <MeetingCard key={meeting.id} meeting={meeting} />
+                <div key={meeting.id} className="flex-none snap-center w-[300px] md:w-auto">
+                  <MeetingCard meeting={meeting} />
+                </div>
               ))}
             </div>
           </div>
@@ -305,9 +310,11 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-nowrap md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 md:mx-0 pb-8 md:pb-0 scrollbar-hide">
               {recentPosts.map((post) => (
-                <PostCard key={post.id} post={post} />
+                <div key={post.id} className="flex-none snap-center w-[300px] md:w-auto">
+                  <PostCard post={post} />
+                </div>
               ))}
             </div>
           </div>
