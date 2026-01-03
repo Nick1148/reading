@@ -8,6 +8,7 @@ import {
   Calendar,
   Users,
   MessageSquare,
+  ChevronDown,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -24,20 +25,19 @@ import { PostCard } from '@/features/board/components';
 import { DUMMY_MEETINGS } from '@/features/meetings/constants';
 import { DUMMY_POSTS } from '@/features/board/constants';
 
-// Reverted to vector icons for consistency
 const FEATURES = [
   {
-    iconUrl: '/images/ui/icon_feature_meeting.png',
+    icon: Calendar,
     title: '정기 모임',
     description: '매월 한 권의 책을 선정하여 함께 읽고 토론합니다.',
   },
   {
-    iconUrl: '/images/ui/icon_feature_community.png', // Placeholder: using the existing vector icon
+    icon: Users,
     title: '따뜻한 커뮤니티',
     description: '30-40대 직장인들이 함께하는 편안한 독서 모임입니다.',
   },
   {
-    iconUrl: '/images/ui/icon_feature_chat.png',
+    icon: MessageSquare,
     title: '활발한 소통',
     description: '독서 후기와 사진을 공유하며 추억을 나눕니다.',
   },
@@ -104,130 +104,141 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden flex flex-col justify-center items-center text-center">
-          {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/hero_illustration.png"
-              alt="Reading Future Library"
-              fill
-              className="object-cover object-center brightness-[0.7]"
-              priority
-            />
-          </div>
-
-          {/* Content Overlay */}
-          <div className="relative z-10 container space-y-8 px-4">
-            <h1 className="text-display-lg md:text-[5rem] lg:text-[7rem] font-serif font-bold tracking-tight text-white drop-shadow-xl loading-tight">
-              Reading Future
-            </h1>
-
-            <p className="text-body-lg md:text-2xl text-white/90 font-medium max-w-2xl mx-auto drop-shadow-md">
-              함께 읽고, 함께 성장하는<br />
-              우리의 독서 커뮤니티
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 border-0 font-bold px-12 h-16 text-xl shadow-xl transition-transform hover:scale-105"
-                asChild
-              >
-                <Link href="/meetings">
-                  모임 참여하기
-                </Link>
-              </Button>
+        <section className="relative bg-primary text-primary-foreground py-20 md:py-32 overflow-hidden">
+          <div className="container relative z-10">
+            <div className="max-w-2xl space-y-6">
+              <h1 className="text-display-sm md:text-display-md font-bold leading-tight">
+                책을 통해
+                <br />
+                함께 성장하는
+                <br />
+                독서 모임
+              </h1>
+              <p className="text-body-lg opacity-90">
+                2024년부터 시작된 회사 독서모임은 책을 사랑하는 동료들이 모여
+                <br />
+                새로운 시각을 얻고, 깊은 대화를 나누는 커뮤니티입니다.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  asChild
+                  className="gap-2"
+                >
+                  <Link href="/meetings">
+                    모임 일정 보기
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                >
+                  <Link href="/register">회원가입</Link>
+                </Button>
+              </div>
             </div>
           </div>
+
+          {/* Book Cover Grid Background */}
+          <div className="absolute right-[-10%] top-[-10%] bottom-[-10%] w-[60%] hidden lg:grid grid-cols-3 gap-4 p-4 transform rotate-6 opacity-40">
+            {[1, 2, 3, 4, 5, 6, 7, 7, 6, 5, 4, 3].map((num, i) => (
+              <div key={i} className="relative aspect-[2/3] rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src={`/images/meetings/photo${num}_ghibli_real.png`}
+                  alt={`Book Cover ${num}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Gradient Overlay for smooth blend */}
+          <div className="absolute top-0 right-0 bottom-0 w-1/2 bg-gradient-to-l from-transparent via-primary/80 to-primary hidden lg:block pointer-events-none" />
         </section>
 
-        {/* Features / Why Us Section - Frameless Design (Responsive) */}
-        <section className="py-16 md:py-32 bg-background">
-          <div className="container max-w-7xl">
-            <div className="text-center mb-12 md:mb-20">
+        {/* Features / Why Us Section */}
+        <section className="py-16 md:py-24 bg-secondary">
+          <div className="container">
+            <div className="text-center mb-12">
               <h2 className="text-h2 mb-4">왜 저희 독서모임인가요?</h2>
-              <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-body text-muted-foreground max-w-2xl mx-auto">
                 단순히 책을 읽는 것을 넘어, 함께 성장하는 커뮤니티를 만들어갑니다.
               </p>
             </div>
-            {/* Frameless: Mobile friendly gap */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 px-4 md:px-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {FEATURES.map((feature) => (
-                <div key={feature.title} className="flex flex-col items-center text-center group">
-                  <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6 md:mb-8">
-                    <Image
-                      src={feature.iconUrl}
-                      alt={feature.title}
-                      fill
-                      className="object-contain drop-shadow-sm transition-transform group-hover:scale-105 duration-500"
-                    />
-                  </div>
-                  <h3 className="text-h4 mb-3 md:mb-4 text-foreground font-bold">{feature.title}</h3>
-                  <p className="text-body md:text-body-lg text-muted-foreground leading-relaxed max-w-xs">
-                    {feature.description}
-                  </p>
-                </div>
+                <Card key={feature.title} className="text-center">
+                  <CardContent className="pt-8 pb-6">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-h5 mb-2">{feature.title}</h3>
+                    <p className="text-body-sm text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Process Section - Timeline Design (Responsive with Vertical Line on Mobile) */}
-        <section className="py-16 md:py-32 bg-secondary/20 overflow-hidden">
-          <div className="container max-w-7xl">
-            <div className="text-center mb-16 md:mb-24">
+        {/* Process Section (How It Works) */}
+        <section className="py-16 md:py-24">
+          <div className="container">
+            <div className="text-center mb-12">
               <h2 className="text-h2 mb-4">이렇게 진행됩니다</h2>
-              <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-body text-muted-foreground max-w-2xl mx-auto">
                 간단한 4단계로 독서모임에 참여할 수 있습니다.
               </p>
             </div>
-
-            <div className="relative">
-              {/* Connecting Line (Desktop: Horizontal) */}
-              <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 bg-primary/20 -z-10" />
-
-              {/* Connecting Line (Mobile: Vertical) */}
-              <div className="block md:hidden absolute top-8 bottom-8 left-1/2 w-0.5 bg-primary/20 -translate-x-1/2 -z-10" />
-
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 px-4">
-                {[
-                  {
-                    step: '01',
-                    title: '회원가입',
-                    description: '홈페이지에서 간단하게\n가입 신청을 하세요',
-                  },
-                  {
-                    step: '02',
-                    title: '책 선정',
-                    description: '매월 투표를 통해\n함께 읽을 책을 정합니다',
-                  },
-                  {
-                    step: '03',
-                    title: '함께 읽기',
-                    description: '한 달 동안 각자의 속도로\n즐겁게 독서합니다',
-                  },
-                  {
-                    step: '04',
-                    title: '모임 참석',
-                    description: '월 1회 정기 모임에서\n깊이 있는 대화를 나눕니다',
-                  },
-                ].map((item, index) => (
-                  <div key={item.step} className="flex flex-col items-center text-center group relative">
-                    {/* Circle Node (With background to cover line) */}
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mb-6 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
-                      <span className="text-title font-bold text-primary font-serif">
-                        {item.step}
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                {
+                  step: '1',
+                  icon: Users,
+                  title: '회원가입',
+                  description: '간단한 정보 입력으로 가입 신청',
+                },
+                {
+                  step: '2',
+                  icon: BookOpen,
+                  title: '책 선정',
+                  description: '매월 투표로 다음 책 선정',
+                },
+                {
+                  step: '3',
+                  icon: Calendar,
+                  title: '함께 읽기',
+                  description: '한 달간 각자의 속도로 독서',
+                },
+                {
+                  step: '4',
+                  icon: MessageSquare,
+                  title: '모임 참석',
+                  description: '월 1회 정기 모임에서 토론',
+                },
+              ].map((item) => (
+                <Card key={item.step} className="relative">
+                  <CardContent className="pt-8 pb-6 text-center">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-label font-semibold">
+                      {item.step}
                     </div>
-
-                    {/* Content Box (Optional: could add minor bg for legibility if needed, but clean is better) */}
-                    <h3 className="text-h5 mb-2 md:mb-3 font-bold text-foreground bg-background/0 md:bg-transparent">{item.title}</h3>
-                    <p className="text-body text-muted-foreground whitespace-pre-line leading-relaxed">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
+                      <item.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-h5 mb-2">{item.title}</h3>
+                    <p className="text-body-sm text-muted-foreground">
                       {item.description}
                     </p>
-                  </div>
-                ))}
-              </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -243,7 +254,7 @@ export default function HomePage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {TEAM_MEMBERS.map((member) => (
-                <Card key={member.name} className="text-center overflow-hidden transition-all hover:shadow-lg border-none bg-background/50">
+                <Card key={member.name} className="text-center overflow-hidden transition-all hover:shadow-lg">
                   <CardContent className="pt-8 pb-6">
                     <Avatar className="h-32 w-32 mx-auto mb-6 ring-4 ring-background shadow-md">
                       <AvatarImage src={member.avatarUrl} alt={member.name} className="object-cover" />

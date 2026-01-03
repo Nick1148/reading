@@ -1,0 +1,133 @@
+[
+  {
+    "slide": 1,
+    "quarter": "25.4Q:",
+    "content": [
+      "각자선택"
+    ],
+    "images": [
+      "/images/history/slide1_rId2.png"
+    ]
+  },
+  {
+    "slide": 2,
+    "quarter": "‘25.4Q",
+    "content": [
+      "사용금액 합계",
+      ": 210,000",
+      "원 초과"
+    ],
+    "images": [
+      "/images/history/slide2_rId4.emf",
+      "/images/history/slide2_rId5.png",
+      "/images/history/slide2_rId3.png"
+    ]
+  },
+  {
+    "slide": 3,
+    "quarter": "25.3Q:",
+    "content": [
+      "어느 작가의 오후"
+    ],
+    "images": [
+      "/images/history/slide3_rId2.png",
+      "/images/history/slide3_rId3.png"
+    ]
+  },
+  {
+    "slide": 4,
+    "quarter": "‘25.3Q",
+    "content": [
+      "사용금액 합계",
+      ": 180,000",
+      "원 초과"
+    ],
+    "images": [
+      "/images/history/slide4_rId4.emf",
+      "/images/history/slide4_rId5.png",
+      "/images/history/slide4_rId3.png"
+    ]
+  },
+  {
+    "slide": 5,
+    "quarter": "25.2Q:",
+    "content": [
+      "사피엔스",
+      ",",
+      "오리엔트 특급살인"
+    ],
+    "images": [
+      "/images/history/slide5_rId3.png",
+      "/images/history/slide5_rId2.png"
+    ]
+  },
+  {
+    "slide": 6,
+    "quarter": "‘25.2Q",
+    "content": [
+      "사용금액 합계",
+      ": 210,000",
+      "원 초과"
+    ],
+    "images": [
+      "/images/history/slide6_rId4.emf",
+      "/images/history/slide6_rId3.png",
+      "/images/history/slide6_rId6.png",
+      "/images/history/slide6_rId5.png"
+    ]
+  },
+  {
+    "slide": 7,
+    "quarter": "25.1Q:",
+    "content": [
+      "월급쟁이 부자로 은퇴하라",
+      ",",
+      "물고기는 존재하지 않는다"
+    ],
+    "images": [
+      "/images/history/slide7_rId2.png"
+    ]
+  },
+  {
+    "slide": 8,
+    "quarter": "‘25.1Q",
+    "content": [
+      "사용금액 합계",
+      ": 180,000",
+      "원 초과"
+    ],
+    "images": [
+      "/images/history/slide8_rId3.png",
+      "/images/history/slide8_rId5.png",
+      "/images/history/slide8_rId4.emf",
+      "/images/history/slide8_rId6.png"
+    ]
+  },
+  {
+    "slide": 9,
+    "quarter": "24.4Q:",
+    "content": [
+      "여덟 단어",
+      ",",
+      "동물농장"
+    ],
+    "images": [
+      "/images/history/slide9_rId2.jpeg",
+      "/images/history/slide9_rId3.jpeg"
+    ]
+  },
+  {
+    "slide": 10,
+    "quarter": "‘24.4Q",
+    "content": [
+      "사용금액 합계",
+      ": 176,700"
+    ],
+    "images": [
+      "/images/history/slide10_rId4.png",
+      "/images/history/slide10_rId5.png",
+      "/images/history/slide10_rId6.emf",
+      "/images/history/slide10_rId3.png"
+    ]
+  }
+]

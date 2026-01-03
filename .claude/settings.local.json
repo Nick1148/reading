@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"Invoke-RestMethod -Uri ''https://api.vooster.ai/v1/projects/BI0F/backlog'' -Headers @{''x-api-key''=''ak_xaf4eb39mfyfnrj8rsrwhcff''} -Method Get\")",
+      "Bash(powershell:*)"
+    ]
+  }
+}

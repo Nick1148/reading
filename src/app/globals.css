@@ -1,61 +1,103 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    /* ========================================
+       Reading Club Style Guide - Color Palette
+       ======================================== */
+
+    /* Primary: Deep Forest Green - #1B4332
+       Usage: Main brand color, primary buttons, navigation, headers
+       Evokes: Knowledge, growth, wisdom, tranquility */
+    --primary: 152 42% 18%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+
+    /* Secondary: Warm Beige - #F5E6D3
+       Usage: Section backgrounds, secondary buttons, subtle highlights
+       Evokes: Paper, warmth, comfort, classic books */
+    --secondary: 30 47% 89%;
+    --secondary-foreground: 152 42% 18%;
+
+    /* Accent: Terracotta - #C75B39
+       Usage: Call-to-action buttons, important highlights, badges, links
+       Evokes: Creativity, energy, enthusiasm */
+    --accent: 16 56% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Grayscale Palette */
+    --gray-50: 30 20% 98%;   /* #FDFCFB - Lightest */
+    --gray-100: 30 15% 95%;  /* #F5F3F0 */
+    --gray-200: 30 10% 88%;  /* #E3E0DC */
+    --gray-300: 30 8% 75%;   /* #C4C0BB */
+    --gray-400: 30 5% 55%;   /* #918D88 */
+    --gray-500: 30 5% 40%;   /* #6B6864 - Mid Gray */
+    --gray-600: 30 5% 30%;   /* #504E4B */
+    --gray-700: 30 6% 22%;   /* #3A3836 */
+    --gray-800: 30 8% 14%;   /* #262422 */
+    --gray-900: 30 10% 8%;   /* #171514 - Darkest */
+
+    /* Semantic Colors */
+    --background: 30 20% 98%;
+    --foreground: 30 10% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 8%;
+    --muted: 30 15% 95%;
+    --muted-foreground: 30 5% 40%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 152 42% 18%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+
+    /* Chart Colors */
+    --chart-1: 152 42% 18%;
+    --chart-2: 16 56% 50%;
+    --chart-3: 30 47% 60%;
+    --chart-4: 180 40% 45%;
+    --chart-5: 45 70% 55%;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    /* Primary: Sage Green - #8FB996 */
+    --primary: 132 25% 64%;
+    --primary-foreground: 30 10% 8%;
+
+    /* Secondary: Dark Warm Brown - #2D2520 */
+    --secondary: 25 18% 15%;
+    --secondary-foreground: 30 15% 90%;
+
+    /* Accent: Coral - #E07A5F */
+    --accent: 12 67% 62%;
+    --accent-foreground: 30 10% 8%;
+
+    /* Semantic Colors */
+    --background: 30 10% 8%;
+    --foreground: 30 15% 95%;
+    --card: 25 18% 12%;
+    --card-foreground: 30 15% 95%;
+    --popover: 25 18% 12%;
+    --popover-foreground: 30 15% 95%;
+    --muted: 25 18% 15%;
+    --muted-foreground: 30 10% 60%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 132 25% 64%;
+
+    /* Chart Colors */
+    --chart-1: 132 25% 64%;
+    --chart-2: 12 67% 62%;
+    --chart-3: 45 50% 50%;
+    --chart-4: 200 50% 55%;
+    --chart-5: 280 45% 60%;
   }
 }
 
