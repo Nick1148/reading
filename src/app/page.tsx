@@ -128,15 +128,15 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-primary to-primary/50 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-8">
                 <Button
                   size="lg"
-                  className="relative bg-white text-primary hover:bg-white border-0 font-bold px-12 h-16 text-xl md:text-2xl shadow-[0_0_40px_-5px_rgba(0,0,0,0.3)] hover:shadow-[0_0_50px_-10px_rgba(255,255,255,0.5)] transition-all hover:scale-105 active:scale-95 w-full md:w-auto animate-[pulse_3s_ease-in-out_infinite]"
+                  className="group relative bg-white text-primary hover:bg-white border-0 font-bold px-12 h-16 text-xl md:text-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)] hover:shadow-[0_25px_60px_-12px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 ring-4 ring-white/30"
                   asChild
                 >
-                  <Link href="/meetings">
+                  <Link href="/meetings" className="flex items-center gap-3">
                     모임 참여하기
+                    <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
               </div>
@@ -153,11 +153,11 @@ export default function HomePage() {
                 단순히 책을 읽는 것을 넘어, 함께 성장하는 커뮤니티를 만들어갑니다.
               </p>
             </div>
-            {/* Frameless: Mobile 2-Column Grid, Desktop 3-Column Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 md:gap-16 px-4 md:px-12">
+            {/* Frameless: Mobile 1-Column (Standard), Desktop 3-Column Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 px-4 md:px-12">
               {FEATURES.map((feature) => (
                 <div key={feature.title} className="flex flex-col items-center text-center group">
-                  <div className="relative w-24 h-24 md:w-48 md:h-48 mb-4 md:mb-8">
+                  <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6 md:mb-8">
                     <Image
                       src={feature.iconUrl}
                       alt={feature.title}
@@ -165,8 +165,8 @@ export default function HomePage() {
                       className="object-contain drop-shadow-sm transition-transform group-hover:scale-105 duration-500"
                     />
                   </div>
-                  <h3 className="text-body-lg md:text-h4 mb-2 md:mb-4 text-foreground font-bold">{feature.title}</h3>
-                  <p className="text-body-sm md:text-body-lg text-muted-foreground leading-relaxed break-keep whitespace-pre-wrap">
+                  <h3 className="text-h4 mb-3 md:mb-4 text-foreground font-bold">{feature.title}</h3>
+                  <p className="text-body md:text-body-lg text-muted-foreground leading-relaxed max-w-xs whitespace-pre-wrap">
                     {feature.description}
                   </p>
                 </div>
@@ -192,7 +192,7 @@ export default function HomePage() {
               {/* Connecting Line (Mobile: Vertical) */}
               <div className="block md:hidden absolute top-8 bottom-8 left-1/2 w-0.5 bg-primary/20 -translate-x-1/2 -z-10" />
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-2 md:px-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 px-4">
                 {[
                   {
                     step: '01',
@@ -215,17 +215,17 @@ export default function HomePage() {
                     description: '월 1회 정기 모임에서\n깊이 있는 대화를 나눕니다',
                   },
                 ].map((item, index) => (
-                  <div key={item.step} className="flex flex-col items-center text-center group relative p-2">
+                  <div key={item.step} className="flex flex-col items-center text-center group relative">
                     {/* Circle Node (With background to cover line) */}
-                    <div className="relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mb-4 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
-                      <span className="text-body-lg md:text-title font-bold text-primary font-serif">
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mb-6 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
+                      <span className="text-title font-bold text-primary font-serif">
                         {item.step}
                       </span>
                     </div>
 
                     {/* Content Box */}
-                    <h3 className="text-body-lg md:text-h5 mb-1 md:mb-3 font-bold text-foreground">{item.title}</h3>
-                    <p className="text-body-xs md:text-body text-muted-foreground whitespace-pre-line leading-relaxed">
+                    <h3 className="text-h5 mb-2 md:mb-3 font-bold text-foreground bg-background/0 md:bg-transparent">{item.title}</h3>
+                    <p className="text-body text-muted-foreground whitespace-pre-line leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -283,7 +283,7 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {upcomingMeetings.map((meeting) => (
                 <div key={meeting.id} className="w-full">
                   <MeetingCard meeting={meeting} />
@@ -310,7 +310,7 @@ export default function HomePage() {
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {recentPosts.map((post) => (
                 <div key={post.id} className="w-full">
                   <PostCard post={post} />
