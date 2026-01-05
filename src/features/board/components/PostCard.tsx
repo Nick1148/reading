@@ -28,7 +28,7 @@ export function PostCard({ post }: PostCardProps) {
   });
 
   return (
-    <Card className="flex flex-row md:flex-col overflow-hidden hover:shadow-lg transition-shadow h-28 md:h-auto">
+    <Card className="relative flex flex-row md:flex-col overflow-hidden hover:shadow-lg transition-shadow h-28 md:h-auto">
       {post.thumbnailUrl && (
         <div className="relative w-28 md:w-full h-full md:h-40 bg-secondary shrink-0">
           <Image

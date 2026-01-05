@@ -30,7 +30,7 @@ export function MeetingCard({ meeting }: MeetingCardProps) {
   const spotsLeft = meeting.maxParticipants - meeting.currentParticipants;
 
   return (
-    <Card className="flex flex-row md:flex-col overflow-hidden hover:shadow-lg transition-shadow h-28 md:h-auto">
+    <Card className="relative flex flex-row md:flex-col overflow-hidden hover:shadow-lg transition-shadow h-28 md:h-auto">
       <div className="relative w-28 md:w-full h-full md:h-48 bg-secondary shrink-0">
         <Image
           src={meeting.bookCoverUrl}
