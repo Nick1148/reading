@@ -104,7 +104,7 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full h-[600px] md:h-[700px] overflow-hidden flex flex-col justify-center items-center text-center">
+        <section className="relative w-full min-h-[60dvh] md:h-[700px] overflow-hidden flex flex-col justify-center items-center text-center">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -145,7 +145,7 @@ export default function HomePage() {
         </section>
 
         {/* Features / Why Us Section - Frameless Design (Responsive) */}
-        <section className="py-16 md:py-32 bg-background">
+        <section className="py-12 md:py-32 bg-background">
           <div className="container max-w-7xl">
             <div className="text-center mb-12 md:mb-20">
               <h2 className="text-h2 mb-4">왜 저희 독서모임인가요?</h2>
@@ -153,11 +153,11 @@ export default function HomePage() {
                 단순히 책을 읽는 것을 넘어, 함께 성장하는 커뮤니티를 만들어갑니다.
               </p>
             </div>
-            {/* Frameless: Mobile 1-Column (Standard), Desktop 3-Column Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 px-4 md:px-12">
+            {/* Frameless: Mobile Compact List, Desktop 3-Column Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-16 px-4 md:px-12">
               {FEATURES.map((feature) => (
-                <div key={feature.title} className="flex flex-col items-center text-center group">
-                  <div className="relative w-40 h-40 md:w-48 md:h-48 mb-6 md:mb-8">
+                <div key={feature.title} className="flex flex-row md:flex-col items-center md:text-center gap-5 md:gap-0 group p-4 md:p-0 rounded-xl bg-secondary/10 md:bg-transparent transition-all hover:bg-secondary/20 md:hover:bg-transparent">
+                  <div className="relative w-16 h-16 md:w-48 md:h-48 mb-0 md:mb-8 shrink-0">
                     <Image
                       src={feature.iconUrl}
                       alt={feature.title}
@@ -165,10 +165,12 @@ export default function HomePage() {
                       className="object-contain drop-shadow-sm transition-transform group-hover:scale-105 duration-500"
                     />
                   </div>
-                  <h3 className="text-h4 mb-3 md:mb-4 text-foreground font-bold">{feature.title}</h3>
-                  <p className="text-body md:text-body-lg text-muted-foreground leading-relaxed max-w-xs whitespace-pre-wrap">
-                    {feature.description}
-                  </p>
+                  <div className="text-left md:text-center">
+                    <h3 className="text-h5 md:text-h4 mb-1 md:mb-4 text-foreground font-bold">{feature.title}</h3>
+                    <p className="text-body-sm md:text-body-lg text-muted-foreground leading-relaxed whitespace-pre-wrap">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -176,7 +178,7 @@ export default function HomePage() {
         </section>
 
         {/* Process Section - Timeline Design (Responsive with Vertical Line on Mobile) */}
-        <section className="py-16 md:py-32 bg-secondary/20 overflow-hidden">
+        <section className="py-12 md:py-32 bg-secondary/20 overflow-hidden">
           <div className="container max-w-7xl">
             <div className="text-center mb-16 md:mb-24">
               <h2 className="text-h2 mb-4">이렇게 진행됩니다</h2>
@@ -185,14 +187,14 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="relative">
+            <div className="relative max-w-2xl mx-auto md:max-w-none">
               {/* Connecting Line (Desktop: Horizontal) */}
               <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-0.5 bg-primary/20 -z-10" />
 
-              {/* Connecting Line (Mobile: Vertical) */}
-              <div className="block md:hidden absolute top-8 bottom-8 left-1/2 w-0.5 bg-primary/20 -translate-x-1/2 -z-10" />
+              {/* Connecting Line (Mobile: Vertical Left) */}
+              <div className="block md:hidden absolute top-0 bottom-0 left-6 w-0.5 bg-primary/20 -z-10" />
 
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 px-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-8">
                 {[
                   {
                     step: '01',
@@ -215,19 +217,21 @@ export default function HomePage() {
                     description: '월 1회 정기 모임에서\n깊이 있는 대화를 나눕니다',
                   },
                 ].map((item, index) => (
-                  <div key={item.step} className="flex flex-col items-center text-center group relative">
-                    {/* Circle Node (With background to cover line) */}
-                    <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mb-6 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
-                      <span className="text-title font-bold text-primary font-serif">
+                  <div key={item.step} className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center group relative md:px-4">
+                    {/* Circle Node (Mobile: Left aligned, Desktop: Centered) */}
+                    <div className="relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-background border-2 border-primary/30 shadow-sm mr-6 md:mr-0 md:mb-8 group-hover:border-primary group-hover:scale-110 transition-all duration-300 z-10 shrink-0">
+                      <span className="text-h6 md:text-title font-bold text-primary font-serif">
                         {item.step}
                       </span>
                     </div>
 
                     {/* Content Box */}
-                    <h3 className="text-h5 mb-2 md:mb-3 font-bold text-foreground bg-background/0 md:bg-transparent">{item.title}</h3>
-                    <p className="text-body text-muted-foreground whitespace-pre-line leading-relaxed">
-                      {item.description}
-                    </p>
+                    <div className="pb-8 md:pb-0 pt-2 md:pt-0">
+                      <h3 className="text-h6 md:text-h5 mb-1 md:mb-3 font-bold text-foreground bg-background/0 md:bg-transparent">{item.title}</h3>
+                      <p className="text-body-sm md:text-body text-muted-foreground whitespace-pre-line leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -236,7 +240,7 @@ export default function HomePage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-16 md:py-24 bg-muted/30">
+        <section className="py-12 md:py-24 bg-muted/30">
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-h2 mb-4">운영진 소개</h2>
@@ -244,21 +248,23 @@ export default function HomePage() {
                 독서모임을 이끌어가는 운영진을 소개합니다.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
               {TEAM_MEMBERS.map((member) => (
-                <Card key={member.name} className="text-center overflow-hidden transition-all hover:shadow-lg border-none bg-background/50">
-                  <CardContent className="pt-8 pb-6">
-                    <Avatar className="h-32 w-32 mx-auto mb-6 ring-4 ring-background shadow-md">
+                <Card key={member.name} className="overflow-hidden transition-all hover:shadow-lg border-none bg-background/50">
+                  <CardContent className="p-4 md:pt-8 md:pb-6 flex flex-row md:flex-col items-center gap-4 text-left md:text-center">
+                    <Avatar className="h-16 w-16 md:h-32 md:w-32 ring-2 md:ring-4 ring-background shadow-md shrink-0">
                       <AvatarImage src={member.avatarUrl} alt={member.name} className="object-cover" />
-                      <AvatarFallback className="text-h3">
+                      <AvatarFallback className="text-h5 md:text-h3">
                         {member.name[0]}
                       </AvatarFallback>
                     </Avatar>
-                    <h3 className="text-h5 mb-1">{member.name}</h3>
-                    <p className="text-label text-primary font-medium mb-3">{member.role}</p>
-                    <p className="text-body-sm text-muted-foreground">
-                      {member.description}
-                    </p>
+                    <div>
+                      <h3 className="text-h6 md:text-h5 mb-0.5 md:mb-1">{member.name}</h3>
+                      <p className="text-label text-primary font-medium mb-1 md:mb-3">{member.role}</p>
+                      <p className="text-body-xs md:text-body-sm text-muted-foreground line-clamp-1 md:line-clamp-none">
+                        {member.description}
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -267,7 +273,7 @@ export default function HomePage() {
         </section>
 
         {/* Upcoming Meetings Section */}
-        <section className="py-16 md:py-24">
+        <section className="py-12 md:py-24">
           <div className="container">
             <div className="flex items-center justify-between mb-8">
               <div>
@@ -294,7 +300,7 @@ export default function HomePage() {
         </section>
 
         {/* Recent Posts Section */}
-        <section className="py-16 md:py-24 bg-muted">
+        <section className="py-12 md:py-24 bg-muted">
           <div className="container">
             <div className="flex items-center justify-between mb-8">
               <div>
