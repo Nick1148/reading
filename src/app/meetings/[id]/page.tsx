@@ -23,12 +23,14 @@ import { Navbar, Footer } from '@/components/layout';
 import { DUMMY_MEETINGS, MEETING_STATUS_COLORS, MEETING_STATUS_LABELS } from '@/features/meetings/constants';
 import { cn } from '@/lib/utils';
 
-const DUMMY_PARTICIPANTS = [
-  { id: '1', name: '김독서', avatarUrl: 'https://picsum.photos/seed/p1/100/100' },
-  { id: '2', name: '이책방', avatarUrl: 'https://picsum.photos/seed/p2/100/100' },
-  { id: '3', name: '박문학', avatarUrl: 'https://picsum.photos/seed/p3/100/100' },
-  { id: '4', name: '최소설', avatarUrl: 'https://picsum.photos/seed/p4/100/100' },
-  { id: '5', name: '정에세이', avatarUrl: 'https://picsum.photos/seed/p5/100/100' },
+const ALL_MEMBERS = [
+  { id: '1', name: '이관익', avatarUrl: 'https://picsum.photos/seed/2/100/100' },
+  { id: '2', name: '김선준', avatarUrl: 'https://picsum.photos/seed/4/100/100' },
+  { id: '3', name: '허창근', avatarUrl: 'https://picsum.photos/seed/5/100/100' },
+  { id: '4', name: '김정훈', avatarUrl: '/images/team/kim_jung_hoon.png' },
+  { id: '5', name: '한현욱', avatarUrl: '/images/team/han_hyun_wook.png' },
+  { id: '6', name: '박장미', avatarUrl: '/images/team/park_jang_mi.png' },
+  { id: '7', name: '김수헌', avatarUrl: 'https://picsum.photos/seed/3/100/100' },
 ];
 
 interface MeetingDetailPageProps {
@@ -138,7 +140,8 @@ export default function MeetingDetailPage({ params }: MeetingDetailPageProps) {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center justify-between">
-                      <span>참여자 ({meeting.currentParticipants}명)</span>
+                      {/* User requested: Exclude host, rest are participants. So always 6 participants. */}
+                      <span>참여자 (6명)</span>
                       <span className="text-body-sm text-muted-foreground font-normal">
                         정원 {meeting.maxParticipants}명
                       </span>
@@ -146,7 +149,8 @@ export default function MeetingDetailPage({ params }: MeetingDetailPageProps) {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-4">
-                      {DUMMY_PARTICIPANTS.slice(0, meeting.currentParticipants).map(
+                      {/* Filter out the host from ALL_MEMBERS to get the participant list */}
+                      {ALL_MEMBERS.filter((member) => member.name !== meeting.host.name).map(
                         (participant) => (
                           <div
                             key={participant.id}
