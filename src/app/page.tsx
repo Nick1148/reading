@@ -104,7 +104,7 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full min-h-[60dvh] md:h-[700px] overflow-hidden flex flex-col justify-center items-center text-center">
+        <section className="relative w-full min-h-[calc(100dvh-4rem)] md:h-[700px] overflow-hidden flex flex-col justify-center items-center text-center">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <Image
